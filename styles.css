@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap');
+
+:root {
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-light-pink: hsl(275, 100%, 97%);
+    --color-body-light-pink: #F9F0FF;
+    --color-grayish-purple: hsl(292, 16%, 49%);
+    --color-dark-purple: hsl(292, 42%, 14%);
+    --color-light-purple: hsla(292, 42%, 14%, 0.75);
+    --color-hover-purple: #AD28EB;
+
+    --ff: "Work Sans", serif;
+    --fs-body: 16px;
+    --fw-regular: 400;
+    --fw-semi-bold: 600;
+    --fw-bold: 700;
+}
+
+*, 
+*::before, 
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-shadow: 0 0 0 1px #333 inset;
+    padding: 1%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    min-height: 100svh;
+    min-height: 100vh; 
+    font-family: var(--ff);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
+    background-color: var(--color-body-light-pink);
+    position: relative;
+    background: url(./assets/images/background-pattern-desktop.svg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    overflow-y: scroll;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 30px;
+    width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    color: var(--color-dark-purple);
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
+}
+
+.questions strong {
+    color: var(--color-dark-purple);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.section-container {
+    padding-top: 30px;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    font-size: 1rem;
+    font-weight: var(--fw-semi-bold);
+    gap: .8rem;
+    cursor: pointer;
+}
+
+strong:hover {
+    color: var(--color-hover-purple);
+}
+
+.answers {
+    max-height: 0;
+    overflow: hidden;
+    color: var(--color-light-purple);
+    font-weight: var(--fw-regular);
+    transition: max-height .9s ease;
+    font-size: .99rem;
+    line-height: 1.5;
+}
+  
+.questions.active > .answers {
+    max-height: 20rem;
+    animation: fade-in .7s ease-in-out;
+}
+
+.questions.active strong img {
+    animation: button-switch .6s both;
+  }
+  
+hr {
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+  
+@keyframes button-switch {
+    0% {
+        transform: rotateY(0);
+    }
+
+    50% {
+        transform: rotateY(540deg);
+    }
+
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 740) and (min-width: 375px) {
+
+    body {
+        background: url(./assets/images/background-pattern-mobile.svg);
+        min-width: 100vw;
+        height: 100%;
+        margin: 0;
+        overflow: scroll;
+    }
+
+    main {
+        max-width: 60rem;
+    }
+}
