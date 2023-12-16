@@ -32,8 +32,6 @@ html {
 }
 
 body {
-    margin: 0;
-    padding: 0;
     display: grid;
     min-height: 100svh;
     min-height: 100vh; 
@@ -54,25 +52,40 @@ body::before {
     content: "";
     display: block;
     width: 100%;
-    height: 20rem;
+    height: 23.2rem;
     background: url(./assets/images/background-pattern-desktop.svg);
     background-repeat: no-repeat;
     background-position: top;
-    background-size: 100%;
+    background-size: contain;
 }
 
+h1::selection, strong::selection{
+    background-color: #000;
+    color: var(--color-hover-purple);
+}
+
+.answers::selection {
+    background-color: var(--color-light-pink);
+}
+
+
 main {
-    position: absolute;
-    top: 60.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 34px;
+}
+
+.container {
+    margin-top: 134px;
     background-color: var(--color-white);
     border-radius: 12px;
     padding: 40px 40px 5px 40px;
     width: 600px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 20px;
+    
 }
-
 
 .header {
     display: flex;
@@ -121,11 +134,11 @@ strong:hover {
     transition: max-height .9s ease;
     font-size: .99rem;
     line-height: 1.5;
+    cursor: text;
 }
   
 .questions.active > .answers {
-    padding: 10px 0;
-    max-height: 20rem;
+    max-height: 23rem;
     animation: fade-in .7s ease-in-out;
 }
 
@@ -134,7 +147,6 @@ strong:hover {
   }
   
 hr {
-   
     border-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -173,11 +185,21 @@ hr {
 
 
     body::before {
+        content: " ";
+        width: 100%;
+        height: 100%;
         background: url(./assets/images/background-pattern-mobile.svg);
-        overflow: scroll;
+        background-size: 100%;
+        background-repeat: no-repeat;
+
     }
 
     main {
+        padding: 0 0 50px 0;
+    }
+
+    .container {
+        margin-top: 80;
         width: clamp(350px, 80vw, 375px);
     }
 
