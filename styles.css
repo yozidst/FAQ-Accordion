@@ -68,7 +68,6 @@ h1::selection, strong::selection{
     background-color: var(--color-light-pink);
 }
 
-
 main {
     position: relative;
     display: flex;
@@ -186,12 +185,9 @@ hr {
 
     body::before {
         content: " ";
-        width: 100%;
-        height: 100%;
         background: url(./assets/images/background-pattern-mobile.svg);
-        background-size: 100%;
         background-repeat: no-repeat;
-
+        background-size: 100%, 100%;
     }
 
     main {
